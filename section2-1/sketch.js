@@ -16,4 +16,23 @@ function setup() {
 //   for(let i = 0; i < 5; i++){
 //     rect(i * 20, i * 20, 20, 20);
 //   }
-// }
+//(params) {
+  
+function setup() {
+  createCanvas(100, 100);
+  fill(0);
+  for(let i = 0; i < 5; i++){
+    rect(i * 20, i * 20, 20, 20)
+  }
+}
+
+function setup() {
+  createCanvas(200,200);
+  fill(0);
+  for(let i = 0; i < 10; i++){
+    for(let j = 0; j< 10; j++){
+      console.log(i, j);
+      rect(i * 20, j * 20, 10, 10);
+    }
+  }
+}
