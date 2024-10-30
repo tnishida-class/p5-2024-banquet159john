@@ -22,7 +22,6 @@ function draw(){
   if(keyIsDown(UP_ARROW)){ y -= 5; }
   if(keyIsDown(DOWN_ARROW)){ y += 5; }
   if(keyIsDown("A".charCodeAt(0))){ x+= 10; }
-  if(keyIsDown(" ".charCodeAt(0))){ x-= 10; }
   y +=vy;
   if(y < height - ground - size/2){vy += g;}
   else{
@@ -31,11 +30,10 @@ function draw(){
   }
 }
 
-function mousePressed(){
-  if(y >= height - ground - size/2
-  ){
-    vy = -jump;
-  }
+function keyPressed(){
+  if(key === " ") 
+    {vy = -jump;} 
+    if(y  <= height - ground - size/2 - jump){vy = -0};
 }
 
 // イベントハンドラを使用するパターン
