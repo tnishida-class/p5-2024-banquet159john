@@ -1,8 +1,8 @@
-const  g = 0.5;
+const  g = 0.5  ;
 const jump = 20;
 const ground = 20;
 const size = 20;
-let x, y, vy;
+let x, y,z,vy;
 
 function setup(){
   createCanvas(windowWidth, windowHeight);
@@ -17,11 +17,11 @@ function draw(){
   line (0, gy, width, gy);
   rect(gy, width, 255);
   ellipse(x, y, 50);
-  if(keyIsDown(LEFT_ARROW)){ x -= 5; }
-  if(keyIsDown(RIGHT_ARROW)){ x += 5; }
-  if(keyIsDown(UP_ARROW)){ y -= 5; }
-  if(keyIsDown(DOWN_ARROW)){ y += 5; }
-  if(keyIsDown("A".charCodeAt(0))){ x+= 10; }
+  if(keyIsDown("A".charCodeAt(0))){ z = 10; }
+  else{z = 5;}
+  if(keyIsDown(LEFT_ARROW)){ x -= z; }
+  if(keyIsDown(RIGHT_ARROW)){ x += z; }
+
   y +=vy;
   if(y < height - ground - size/2){vy += g;}
   else{
@@ -31,11 +31,9 @@ function draw(){
 }
 
 function keyPressed(){
-  if(key === " ") 
-    {vy = -jump;} 
-    if(y  <= height - ground - size/2 - jump){vy = -0};
+  if(y < height - ground - size/2-jump){vy = -0;}
+  else if(key === " ") {vy = -jump;}
 }
-
 // イベントハンドラを使用するパターン
 // function keyPressed(){
 //   if(keyCode == LEFT_ARROW){ x -= 5; }
