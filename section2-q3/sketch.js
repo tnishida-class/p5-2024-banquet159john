@@ -31,7 +31,6 @@ function drawCircle(c, r) {
   ellipse(cx, cy, r, r);
 }
 
-
 function drawArcs(c1, c2, r) {
   for (let i = 0; i < 20; i++) {
     let start = TWO_PI / 20 * i;
@@ -40,4 +39,5 @@ function drawArcs(c1, c2, r) {
     arc(cx, cy, r, r, start, stop, PIE);
   }
 }
+
 
