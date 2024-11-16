@@ -7,6 +7,14 @@ let balls;
 function setup(){
   createCanvas(windowWidth, windowHeight);
   balls = [];
+  let b1 = { x: 50, y: 50, vx: 3, vy:0, size: random(10, 100)};
+  balls.push(b1);
+  let b2 = { x: 40, y: 40, vx: 0, vy:3, size: random(10, 100)};
+  balls.push(b2);
+  for(let n = 0; n < 10; n++){
+  let bn ={ x: 60, y: 60, vx: random(1, 10), vy: random(1, 10), size: random(10, 100)};
+  balls.push(bn)
+  }
 }
 
 function draw(){
