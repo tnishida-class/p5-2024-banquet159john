@@ -11,28 +11,40 @@ function setup(){
   vy = 0;
 }
 
-function draw(){
+function draw() {
   background(160, 192, 255);
   let gy = height - ground;
-  line (0, gy, width, gy);
+  line(0, gy, width, gy);
   rect(gy, width, 255);
   ellipse(x, y, 50);
-  if(keyIsDown("A".charCodeAt(0))){ z = 10; }
-  else{z = 5;}
-  if(keyIsDown(LEFT_ARROW)){ x -= z; }
-  if(keyIsDown(RIGHT_ARROW)){ x += z; }
+  if (keyIsDown("A".charCodeAt(0))) {
+    z = 10;
+  } else {
+    z = 5;
+  }
+  if (keyIsDown(LEFT_ARROW)) {
+    x -= z;
+  }
+  if (keyIsDown(RIGHT_ARROW)) {
+    x += z;
+  }
 
-  y +=vy;
-  if(y < height - ground - size/2){vy += g;}
-  else{
+  y += vy;
+  if (y < height - ground - size / 2) {
+    vy += g;
+  } else {
     vy = 0;
-    y = height - ground - size/2;
+    y = height - ground - size / 2;
+    isJumping = false;  // 地面に到達したらジャンプ状態をリセット
   }
 }
 
-function keyPressed(){
-  if(y < height - ground - size/2-jump){vy = -0;}
-  else if(key === " ") {vy = -jump;}
+function keyPressed() {
+  // スペースキーが押されたときにジャンプ可能かどうかチェック
+  if (key === " " && !isJumping) {
+    vy = -jump;
+    isJumping = true;  // ジャンプ状態を設定
+  }
 }
 // イベントハンドラを使用するパターン
 // function keyPressed(){
