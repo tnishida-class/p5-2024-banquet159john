@@ -11,44 +11,44 @@ function setup() {
   y = height - ground - size / 2;
   vy = 0;
   vx = 5;
-  interval = 60; // setup内で初期化する
+  interval = 60; 
 }
 
 function draw() {
   background(160, 192, 255);
   let gy = height - ground;
 
-  // 一定間隔で障害物を生成
+  
   if (frameCount % interval === 0) {
     createObstacles(); 
   }
 
-  // 地面の描画
+  
   line(0, gy, width, gy);
   line(0, ground, width, ground)
 
-  // プレイヤーキャラクターを描画
+  
   ellipse(x, y, size);
 
-  // 障害物の描画と移動処理
+  
   for (let i = obstacles.length - 1; i >= 0; i--) {
     let obs = obstacles[i];
     
-    // 障害物を縦方向に複数描画
+    
     for (let n = 0; n < 15; n++) {
       let yOffset = n * 60; 
       rect(obs.x, gy - obs.h - yOffset, obs.w, obs.h);
     }
 
-    // 障害物を左に移動
+    
     obs.x -= 2;
 
-    // 画面外に出た障害物を削除
+    
     if (obs.x + obs.w < 0) {
       obstacles.splice(i, 1);
     }
 
-    // プレイヤーとの当たり判定
+    
     for (let n = 0; n < 14; n++) {
       let yOffset = n * 60;
       if (
@@ -58,29 +58,28 @@ function draw() {
         y < gy - yOffset
       ) {
         console.log("Hit!");
-        resetPlayerPosition(); // 衝突したらプレイヤーをリセット
-        return; // 衝突した場合、処理を中断
-      }
+        resetPlayerPosition(); 
+        return; 
     }
   }
 
-  // プレイヤーが地面を超えたら初期位置に戻す処理
+  
   if (y <= ground) {
     resetPlayerPosition();
   }
 }
 
-// プレイヤーの位置を初期化する関数
+
 function resetPlayerPosition() {
   x = width / 2;
   y = height - ground - size / 2;
   vy = 0;
 }
 
-// 新しい障害物を生成する関数
+
 function createObstacles() {
   let obs = {
-    x: width, // 画面右端に生成
+    x: width, 
     y: height - ground,
     w: random(20, 50),
     h: random(20, 50),
@@ -88,7 +87,7 @@ function createObstacles() {
   obstacles.push(obs);
 }
 
-// プレイヤーの移動処理を行う関数（キーが押されたときに実行）
+
 function keyPressed() {
   const stepSize = 50; // 円の移動ステップサイズ
   if (keyCode === LEFT_ARROW) {
@@ -102,7 +101,7 @@ function keyPressed() {
   }
 }
 
-// ウィンドウサイズ変更時にキャンバスをリサイズ
+
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
