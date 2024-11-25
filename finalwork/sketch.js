@@ -35,7 +35,7 @@ function draw() {
     let obs = obstacles[i];
     
     // 障害物を縦方向に複数描画
-    for (let n = 0; n < 14; n++) {
+    for (let n = 0; n < 15; n++) {
       let yOffset = n * 60; 
       rect(obs.x, gy - obs.h - yOffset, obs.w, obs.h);
     }
