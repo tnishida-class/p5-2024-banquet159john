@@ -62,7 +62,7 @@ function draw() {
         return; 
     }
   }
-
+}
   
   if (y <= ground) {
     resetPlayerPosition();
