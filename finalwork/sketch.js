@@ -89,7 +89,7 @@ function createObstacles() {
 
 
 function keyPressed() {
-  const stepSize = 50; // 円の移動ステップサイズ
+  const stepSize = 50; 
   if (keyCode === LEFT_ARROW) {
     x -= stepSize;
   } else if (keyCode === RIGHT_ARROW) {
