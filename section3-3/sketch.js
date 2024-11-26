@@ -1,23 +1,51 @@
-// テキスト「キーボード操作に反応する」
-let x, y;
+const  g = 0.5  ;
+const jump = 20;
+const ground = 20;
+const size = 20;
+let x, y,z,vy;
 
 function setup(){
   createCanvas(windowWidth, windowHeight);
   x = width / 2;
-  y = height / 2;
+  y = height - ground - size/2;
+  vy = 0;
 }
 
-function draw(){
+function draw() {
   background(160, 192, 255);
+  let gy = height - ground;
+  line(0, gy, width, gy);
+  rect(gy, width, 255);
   ellipse(x, y, 50);
-  if(keyIsDown(LEFT_ARROW)){ x -= 5; }
-  if(keyIsDown(RIGHT_ARROW)){ x += 5; }
-  if(keyIsDown(UP_ARROW)){ y -= 5; }
-  if(keyIsDown(DOWN_ARROW)){ y += 5; }
-  if(keyIsDown("A".charCodeAt(0))){ x+= 10; }
-  if(keyIsDown(" ".charCodeAt(0))){ x-= 10; }
+  if (keyIsDown("A".charCodeAt(0))) {
+    z = 10;
+  } else {
+    z = 5;
+  }
+  if (keyIsDown(LEFT_ARROW)) {
+    x -= z;
+  }
+  if (keyIsDown(RIGHT_ARROW)) {
+    x += z;
+  }
+
+  y += vy;
+  if (y < height - ground - size / 2) {
+    vy += g;
+  } else {
+    vy = 0;
+    y = height - ground - size / 2;
+    isJumping = false;  // 地面に到達したらジャンプ状態をリセット
+  }
 }
 
+function keyPressed() {
+  // スペースキーが押されたときにジャンプ可能かどうかチェック
+  if (key === " " && !isJumping) {
+    vy = -jump;
+    isJumping = true;  // ジャンプ状態を設定
+  }
+}
 // イベントハンドラを使用するパターン
 // function keyPressed(){
 //   if(keyCode == LEFT_ARROW){ x -= 5; }
