@@ -1,4 +1,4 @@
-// 最終課題を制作しよう
+// 最終課題を制作しよう!
 const ground = 20;
 const size = 20;
 let x, y, vy, vx;
